@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "851586640266",
+    "firebase_url": "https://travelbookings-26a27.firebaseio.com",
+    "project_id": "travelbookings-26a27",
+    "storage_bucket": "travelbookings-26a27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:851586640266:android:572ed0b0fa5a8fe4190073",
+        "android_client_info": {
+          "package_name": "com.example.travelbookings"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "851586640266-ivha99ndd4jlejjvsh9jk1dpkgt0splb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.travelbookings",
+            "certificate_hash": "b948926664a83b42402da800152b4f9b28fbdb35"
+          }
+        },
+        {
+          "client_id": "851586640266-cg53hh24njk995jvso7rldv1r0ne80a5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6gCBvwbQjvs9hxGS691cgu3w-NJTfiPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "851586640266-cg53hh24njk995jvso7rldv1r0ne80a5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
