@@ -1,6 +1,8 @@
 package com.example.travelbookings.model;
 
-public class TravelDeal {
+import java.io.Serializable;
+
+public class TravelDeal implements Serializable {
     private String id;
     private String title;
     private String description;
@@ -14,6 +16,8 @@ public class TravelDeal {
         this.price = price;
         this.imageUrl = imageUrl;
     }
+
+    public TravelDeal() { }
 
     public String getId() {
         return id;

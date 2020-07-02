@@ -1,14 +1,17 @@
 package com.example.travelbookings.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.travelbookings.MainActivity;
 import com.example.travelbookings.R;
 import com.example.travelbookings.common.FirebaseUtil;
 import com.example.travelbookings.model.TravelDeal;
@@ -85,12 +88,32 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealsViewHolde
         return deals.size();
     }
 
-    public class DealsViewHolder extends RecyclerView.ViewHolder {
+    public class DealsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView title, price, desc;
         public DealsViewHolder(@NonNull View itemView) {
             super(itemView);
+            title = itemView.findViewById(R.id.textViewTitle);
+            desc = itemView.findViewById(R.id.textViewDescription);
+            price = itemView.findViewById(R.id.textViewPrice);
+
+            itemView.setOnClickListener(this);
         }
 
-        public void bind(TravelDeal deal) {}
+        public void bind(TravelDeal deal)   {
+            title.setText(deal.getTitle());
+            price.setText(deal.getPrice());
+            desc.setText(deal.getDescription());
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+
+            TravelDeal deal = deals.get(position);
+            Intent intent = new Intent(itemView.getContext(), MainActivity.class);
+            intent.putExtra("deal", deal);
+            itemView.getContext().startActivity(intent);
+        }
     }
 
 }

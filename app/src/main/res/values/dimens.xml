@@ -3,4 +3,6 @@
     <dimen name="text_margin_standard">16dp</dimen>
     <dimen name="text_margin_large">20dp</dimen>
     <dimen name="list_dimen">10dp</dimen>
+    <dimen name="textLarge">24sp</dimen>
+    <dimen name="textSmall">18sp</dimen>
 </resources>
