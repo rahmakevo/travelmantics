@@ -7,4 +7,9 @@
         android:title="New Travel Deal"
         app:showAsAction="never"/>
 
+    <item
+        android:id="@+id/action_logout"
+        android:title="Sign out"
+        app:showAsAction="never"/>
+
 </menu>

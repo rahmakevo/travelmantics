@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,27 +22,26 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealsViewHolder> {
+    ArrayList<TravelDeal> deals;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
-    ArrayList<TravelDeal> deals;
-    private ChildEventListener childEventListener;
+    private ChildEventListener mChildListener;
 
     public DealAdapter() {
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
         mDatabaseReference = FirebaseUtil.mDatabaseReference;
-
-        deals = FirebaseUtil.mDeals;
-
-        childEventListener = new ChildEventListener() {
+        this.deals = FirebaseUtil.mDeals;
+        mChildListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                TravelDeal deal = dataSnapshot.getValue(TravelDeal.class);
-                deal.setId(dataSnapshot.getKey());
-                deals.add(deal);
+                TravelDeal td = dataSnapshot.getValue(TravelDeal.class);
+                td.setId(dataSnapshot.getKey());
+                deals.add(td);
                 notifyItemInserted(deals.size()-1);
             }
 
@@ -65,7 +65,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealsViewHolde
 
             }
         };
-        mDatabaseReference.addChildEventListener(childEventListener);
+        mDatabaseReference.addChildEventListener(mChildListener);
     }
 
     @NonNull
@@ -90,11 +90,13 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealsViewHolde
 
     public class DealsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title, price, desc;
+        ImageView mImage;
         public DealsViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.textViewTitle);
             desc = itemView.findViewById(R.id.textViewDescription);
             price = itemView.findViewById(R.id.textViewPrice);
+            mImage = itemView.findViewById(R.id.imageViewDeal);
 
             itemView.setOnClickListener(this);
         }
@@ -103,6 +105,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealsViewHolde
             title.setText(deal.getTitle());
             price.setText(deal.getPrice());
             desc.setText(deal.getDescription());
+            showImage(deal.getImageUrl());
         }
 
         @Override
@@ -113,6 +116,16 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealsViewHolde
             Intent intent = new Intent(itemView.getContext(), MainActivity.class);
             intent.putExtra("deal", deal);
             itemView.getContext().startActivity(intent);
+        }
+
+        private void showImage(String url) {
+            if (url != null && url.isEmpty() == false) {
+                Picasso.get()
+                        .load(url)
+                        .resize(80, 80)
+                        .centerCrop()
+                        .into(mImage);
+            }
         }
     }
 
