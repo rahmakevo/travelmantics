@@ -2,4 +2,5 @@
 <resources>
     <dimen name="text_margin_standard">16dp</dimen>
     <dimen name="text_margin_large">20dp</dimen>
+    <dimen name="list_dimen">10dp</dimen>
 </resources>

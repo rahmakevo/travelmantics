@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.example.travelbookings.common.FirebaseUtil;
 import com.example.travelbookings.model.TravelDeal;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -61,8 +62,9 @@ public class MainActivity extends AppCompatActivity {
         String price = txtPrice.getText().toString();
 
         TravelDeal deal = new TravelDeal(title, desc, price, "");
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("deals");
+        FirebaseUtil.openReferences("deals");
+        firebaseDatabase = FirebaseUtil.mFirebaseDatabase;
+        databaseReference = FirebaseUtil.mDatabaseReference;
         databaseReference.push().setValue(deal);
     }
 
