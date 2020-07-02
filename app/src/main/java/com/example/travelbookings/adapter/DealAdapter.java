@@ -1,5 +1,6 @@
 package com.example.travelbookings.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -30,7 +31,6 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealsViewHolde
     private ChildEventListener childEventListener;
 
     public DealAdapter() {
-        FirebaseUtil.openReferences("deals");
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
         mDatabaseReference = FirebaseUtil.mDatabaseReference;
 

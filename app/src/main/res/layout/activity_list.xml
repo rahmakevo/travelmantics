@@ -9,14 +9,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_deals"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/list_dimen"
         android:layout_marginLeft="@dimen/list_dimen"
         android:layout_marginTop="@dimen/list_dimen"
         android:layout_marginEnd="@dimen/list_dimen"
         android:layout_marginRight="@dimen/list_dimen"
-        android:layout_marginBottom="@dimen/list_dimen"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

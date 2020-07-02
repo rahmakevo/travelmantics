@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FirebaseUtil.openReferences("deals");
         firebaseDatabase = FirebaseUtil.mFirebaseDatabase;
         databaseReference = FirebaseUtil.mDatabaseReference;
 

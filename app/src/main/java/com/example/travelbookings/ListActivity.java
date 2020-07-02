@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.travelbookings.adapter.DealAdapter;
+import com.example.travelbookings.common.FirebaseUtil;
 
 public class ListActivity extends AppCompatActivity {
     @Override
@@ -44,6 +45,19 @@ public class ListActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        FirebaseUtil.detachListener();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FirebaseUtil.openReferences("deals", this);
+        FirebaseUtil.attachListener();
     }
 
 }
